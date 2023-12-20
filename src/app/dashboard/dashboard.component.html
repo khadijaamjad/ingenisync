@@ -1,0 +1,25 @@
+<div>
+  <mat-toolbar>
+    <button mat-icon-button (click)="toggleSideNav()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>IngeniSync</span>
+    <span></span>
+    <button mat-icon-button>
+      <mat-icon>favorite</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>share</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <mat-sidenav-container>
+    <mat-sidenav mode="side" [opened]="sideNavOpened" fixedInViewport>
+      <mat-nav-list>
+        @for (link of list; track link) {
+        <a mat-list-item [href]="link.url" [activated]="link.isActive">{{ link.label }}</a>
+        }
+      </mat-nav-list>
+    </mat-sidenav>
+  </mat-sidenav-container>
+</div>
