@@ -1,0 +1,73 @@
+<div class="main-div">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>Welcome to IngeniSync!</mat-card-title>
+      <mat-card-subtitle>Please log in to continue...</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div fxLayout="row">
+        <div><img mat-card-image src="../../assets/login.svg" /></div>
+
+        <div>
+          <form [formGroup]="fg" (ngSubmit)="onSubmit()">
+            <mat-form-field appearance="outline">
+              <mat-label>Username</mat-label>
+              <input
+                matInput
+                type="text"
+                formControlName="username"
+                required
+                (keyup)="clearError()"
+              />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Password</mat-label>
+              <input
+                matInput
+                [type]="hidePassword ? 'password' : 'text'"
+                formControlName="password"
+                required
+                (keyup)="clearError()"
+              />
+              <button
+                mat-icon-button
+                matSuffix
+                (click)="hidePassword = !hidePassword"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hidePassword"
+                class="mr-1"
+                type="button"
+              >
+                <mat-icon>{{
+                  hidePassword ? "visibility_off" : "visibility"
+                }}</mat-icon>
+              </button>
+            </mat-form-field>
+
+            <mat-error *ngIf="errorMsg">
+              <span class="material-icons" style="vertical-align: middle">
+                error_outline </span
+              ><span class="mr-1"></span><span>{{ errorMsg }}</span>
+            </mat-error>
+
+            <mat-divider></mat-divider>
+          </form>
+        </div>
+      </div>
+    </mat-card-content>
+
+    <mat-card-actions align="end">
+      <button
+        class="right"
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="!fg.valid"
+      >
+        Login
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
