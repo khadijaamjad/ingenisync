@@ -39,5 +39,18 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .elevated-mat-card {
-  @include mat.elevation(3);
+  @include mat.elevation(5);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+}
+
+.col {
+  flex: 1;
+}
+
+.right {
+  float: right;
 }
