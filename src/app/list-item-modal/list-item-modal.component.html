@@ -1,0 +1,70 @@
+<h2 mat-dialog-title>{{ description }}</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="formGroup" id="userForm" (ngSubmit)="onSubmit()">
+    <div class="p-1">
+      <div class="form-row">
+        <div class="form-group">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>To do ...</mat-label>
+            <input matInput type="text" formControlName="toDo" />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-6">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>List</mat-label>
+            <mat-select formControlName="listName">
+              <!-- <mat-option *ngFor="let list of lists" [value]="list.id">
+                {{ list.name }}
+              </mat-option> -->
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="form-group col-6">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Team</mat-label>
+            <!-- <mat-select formControlName="team_name">
+              <mat-option *ngFor="let team of teams" [value]="team.name">
+                {{ team.name }}
+              </mat-option>
+            </mat-select> -->
+          </mat-form-field>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions class="right">
+  <div class="form-group">
+    <button
+      mat-flat-button
+      [disabled]="formGroup.invalid"
+      color="primary"
+      class="mr-1 right"
+      (click)="onSubmit()"
+      form="userForm"
+    >
+      <span
+        *ngIf="loading"
+        class="spinner-border spinner-border-sm mr-1 right"
+      ></span>
+      {{ isAddMode ? 'Add' : 'Update' }}
+    </button>
+
+    <button
+      mat-flat-button
+      type="button"
+      color="warn"
+      class="mr-1 right"
+      (click)="close()"
+    >
+      Cancel
+    </button>
+  </div>
+</mat-dialog-actions>

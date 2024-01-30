@@ -1,6 +1,6 @@
 <div>
   <mat-toolbar>
-    <button mat-icon-button (click)="toggleSideNav()">
+    <button mat-icon-button (click)="sidenav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
     <span>IngeniSync</span>
@@ -13,13 +13,27 @@
     </button>
   </mat-toolbar>
 
-  <mat-sidenav-container>
-    <mat-sidenav mode="side" [opened]="sideNavOpened" fixedInViewport>
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav
+      #sidenav
+      mode="side"
+      opened
+      class="sidenav"
+      [fixedInViewport]="options.value.fixed"
+      [fixedTopGap]="options.value.top"
+      [fixedBottomGap]="options.value.bottom"
+    >
       <mat-nav-list>
         @for (link of list; track link) {
-        <a mat-list-item [href]="link.url" [activated]="link.isActive">{{ link.label }}</a>
+        <a mat-list-item [href]="link.url" [activated]="link.isActive">{{
+          link.label
+        }}</a>
         }
       </mat-nav-list>
     </mat-sidenav>
+
+    <mat-sidenav-content [formGroup]="options" class="sidenav-content">
+      <p>Coentent</p>
+    </mat-sidenav-content>
   </mat-sidenav-container>
 </div>

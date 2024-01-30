@@ -1,0 +1,68 @@
+<div class="main-div">
+  <div class="row">
+    <div class="col-md-6">
+      <h1>Welcome to IngeniSync!</h1>
+      <h3>Please log in to continue...</h3>
+      <img mat-card-image src="../../assets/login.svg" />
+    </div>
+
+    <div class="col-md-6 form-content">
+      <form [formGroup]="fg" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <mat-form-field appearance="outline">
+            <mat-label>Username</mat-label>
+            <input
+              matInput
+              type="text"
+              formControlName="username"
+              required
+              (keyup)="clearError()"
+            />
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input
+              matInput
+              [type]="hidePassword ? 'password' : 'text'"
+              formControlName="password"
+              required
+              (keyup)="clearError()"
+            />
+            <button
+              mat-icon-button
+              matSuffix
+              (click)="hidePassword = !hidePassword"
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hidePassword"
+              class="mr-1"
+              type="button"
+            >
+              <mat-icon>{{
+                hidePassword ? "visibility_off" : "visibility"
+              }}</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+
+        <mat-error *ngIf="errorMsg">
+          <span class="material-icons" style="vertical-align: middle">
+            error_outline </span
+          ><span class="mr-1"></span><span>{{ errorMsg }}</span>
+        </mat-error>
+
+        <mat-divider style="margin-top: 4%; margin-bottom: 8%"></mat-divider>
+        <button
+          class="right"
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="!fg.valid"
+        >
+          Login
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

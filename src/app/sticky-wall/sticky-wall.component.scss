@@ -1,0 +1,6 @@
+.grid {
+  display: grid;
+  grid-auto-flow: row;
+  grid-template: auto/ auto auto auto;
+  gap: 10px;
+}

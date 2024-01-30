@@ -1,0 +1,41 @@
+<mat-card class="elevated-mat-card list-card">
+  <mat-card-header>
+    <div class="row">
+      <div class="col">
+        <h2>Shoes</h2>
+      </div>
+
+      <div class="col">
+        <button
+          mat-icon-button
+          aria-label="Add new item"
+          matTooltip="Add new item"
+          color="primary"
+          type="button"
+          class="right"
+        >
+          <mat-icon>add_circle</mat-icon>
+        </button>
+      </div>
+    </div>
+  </mat-card-header>
+
+  <mat-card-content>
+    <mat-selection-list #entries>
+      @for (entry of listEntries; track entry) {
+      <mat-list-option>{{ entry }}</mat-list-option>
+      <mat-divider></mat-divider>
+      }
+    </mat-selection-list>
+
+    <button
+      mat-button
+      aria-label="Add new item"
+      matTooltip="Add new item"
+      color="primary"
+      type="button"
+    >
+      Add new item
+    </button>
+  </mat-card-content>
+</mat-card>
