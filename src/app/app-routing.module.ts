@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { StickyWallComponent } from './sticky-wall/sticky-wall.component';
 import { ListsComponent } from './lists/lists.component';
 import { ListComponent } from './list/list.component';
+import { CalendarComponent } from './calendar/calendar.component';
 
 const routes: Routes = [
   { path: 'home', component: DashboardComponent },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'stickyWall', component: StickyWallComponent },
   { path: 'lists', component: ListsComponent },
   { path: 'list', component: ListComponent },
+  { path: 'calendar', component: CalendarComponent },
 ];
 
 @NgModule({
