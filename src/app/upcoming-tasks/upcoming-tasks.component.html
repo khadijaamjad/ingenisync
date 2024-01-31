@@ -1,0 +1,28 @@
+<h2>Upcoming 12</h2>
+
+<h3>Today</h3>
+<mat-action-list #listName role="list">
+  @for (item of tasksForToday; track item) {
+  <mat-list-item role="button"
+    >{{ item.task }} <mat-icon class="right">chevron_right</mat-icon>
+  </mat-list-item>
+  }
+</mat-action-list>
+
+<h3>Tomorrow</h3>
+<mat-action-list #listName role="list">
+  @for (item of tasksForToday; track item) {
+  <mat-list-item role="button"
+    >{{ item.task }} <mat-icon class="right">chevron_right</mat-icon>
+  </mat-list-item>
+  }
+</mat-action-list>
+
+<h3>This Week</h3>
+<mat-action-list #listName role="list">
+  @for (item of tasksForToday; track item) {
+  <mat-list-item role="button"
+    >{{ item.task }} <mat-icon class="right">chevron_right</mat-icon>
+  </mat-list-item>
+  }
+</mat-action-list>
