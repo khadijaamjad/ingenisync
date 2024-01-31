@@ -20,6 +20,11 @@ import { ListComponent } from './list/list.component';
 import { ListItemModalComponent } from './list-item-modal/list-item-modal.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { CalendarUtilsComponent } from './calendar-utils/calendar-utils.component';
+import { WrongRouteComponent } from './wrong-route/wrong-route.component';
+import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { UpcomingTasksComponent } from './upcoming-tasks/upcoming-tasks.component';
+import { TodaysTasksComponent } from './todays-tasks/todays-tasks.component';
 
 @NgModule({
   declarations: [
@@ -33,23 +38,29 @@ import { CalendarUtilsComponent } from './calendar-utils/calendar-utils.componen
     ListItemModalComponent,
     CalendarComponent,
     CalendarUtilsComponent,
+    WrongRouteComponent,
+    HomeComponent,
+    UpcomingTasksComponent,
+    TodaysTasksComponent,
   ],
   imports: [
+    RouterLink,
     FormsModule,
+    RouterOutlet,
     BrowserModule,
     MaterialModule,
     AppRoutingModule,
+    RouterLinkActive,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     CommonModule,
     HttpClientModule,
     CalendarModule.forRoot({
       provide: DateAdapter,
-      useFactory: adapterFactory
+      useFactory: adapterFactory,
     }),
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-
 export class AppModule {}

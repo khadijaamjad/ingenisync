@@ -1,4 +1,5 @@
 export interface ListItem {
   id: number;
-  description: string;
+  task: string;
+  date: string;
 }
