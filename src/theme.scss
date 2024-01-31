@@ -1,0 +1,227 @@
+@use '@angular/material' as mat;
+
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap");
+
+// Define your theme with color palettes, typography and density
+
+$mat-theme-primary-palette: map-merge(
+  mat.$green-palette,
+  (
+    501: #345830,
+    201: #4f8749,
+    601: #acc196,
+    contrast: (
+      501: #d3ecb8,
+      201: #fffefe,
+    ),
+  )
+);
+$mat-theme-primary: mat.define-palette(
+  $mat-theme-primary-palette,
+  $default: 501,
+  $lighter: 201,
+  $darker: 700,
+  $text: 601
+);
+
+$mat-theme-accent-palette: map-merge(
+  mat.$lime-palette,
+  (
+    501: #c5dcad,
+    201: #9bac88,
+    701: #8fa07d,
+    601: #acc196,
+    contrast: (
+      501: #274224,
+    ),
+  )
+);
+$mat-theme-accent: mat.define-palette(
+  $mat-theme-accent-palette,
+  $default: 501,
+  $lighter: 201,
+  $darker: 701,
+  $text: 601
+);
+
+$mat-theme-warn-palette: map-merge(
+  mat.$red-palette,
+  (
+    501: #d31e1e,
+  )
+);
+$mat-theme-warn: mat.define-palette(
+  $mat-theme-warn-palette,
+  $default: 501,
+  $lighter: 500,
+  $darker: 500,
+  $text: A700
+);
+
+$mat-dark-theme-primary-palette: map-merge(
+  mat.$lime-palette,
+  (
+    contrast: (
+      200: #131515,
+      A100: rgba(0, 0, 0, 0.87),
+      A700: rgba(0, 0, 0, 0.87),
+    ),
+  )
+);
+$mat-dark-theme-primary: mat.define-palette(
+  $mat-dark-theme-primary-palette,
+  $default: 200,
+  $lighter: A100,
+  $darker: A700,
+  $text: 700
+);
+
+$mat-dark-theme-accent-palette: map-merge(
+  mat.$light-green-palette,
+  (
+    501: #83af50,
+    701: #749a48,
+    contrast: (
+      50: black,
+    ),
+  )
+);
+$mat-dark-theme-accent: mat.define-palette(
+  $mat-dark-theme-accent-palette,
+  $default: 501,
+  $lighter: 50,
+  $darker: 701,
+  $text: A100
+);
+
+$mat-dark-theme-warn-palette: map-merge(
+  mat.$red-palette,
+  (
+    501: #ff5c4e,
+    201: #e25664,
+  )
+);
+$mat-dark-theme-warn: mat.define-palette(
+  $mat-dark-theme-warn-palette,
+  $default: 501,
+  $lighter: 201,
+  $darker: A700,
+  $text: 100
+);
+
+
+// $mat-typography: mat.define-typography-config(
+//   $font-family: "Poppins",
+//   $display-4:
+//     mat.define-typography-level(
+//       $font-size: 96px,
+//       $font-weight: 300,
+//       $font-family: Poppins,
+//     ),
+//   $display-3:
+//     mat.define-typography-level(
+//       $font-size: 60px,
+//       $font-weight: 500,
+//       $font-family: Poppins,
+//     ),
+//   $display-2:
+//     mat.define-typography-level(
+//       $font-size: 48px,
+//       $font-weight: 500,
+//       $font-family: Poppins,
+//     ),
+//   $display-1:
+//     mat.define-typography-level(
+//       $font-size: 34px,
+//       $font-weight: 500,
+//       $font-family: Poppins,
+//     ),
+//   $headline:
+//     mat.define-typography-level(
+//       $font-size: 24px,
+//       $font-weight: 500,
+//       $font-family: Poppins,
+//     ),
+//   $title:
+//     mat.define-typography-level(
+//       $font-size: 20px,
+//       $font-weight: 500,
+//       $font-family: Poppins,
+//     ),
+//   $subheading-2:
+//     mat.define-typography-level(
+//       $font-size: 18px,
+//       $font-weight: 500,
+//       $font-family: Poppins,
+//     ),
+//   $subheading-1:
+//     mat.define-typography-level(
+//       $font-size: 20px,
+//       $font-weight: 500,
+//       $font-family: Poppins,
+//     ),
+//   $body-2:
+//     mat.define-typography-level(
+//       $font-size: 16px,
+//       $font-weight: 400,
+//       $font-family: Poppins,
+//     ),
+//   $body-1:
+//     mat.define-typography-level(
+//       $font-size: 18px,
+//       $font-weight: 400,
+//       $font-family: Poppins,
+//     ),
+//   $caption:
+//     mat.define-typography-level(
+//       $font-size: 16px,
+//       $font-weight: Medium,
+//       $font-family: Poppins,
+//     ),
+//   $button:
+//     mat.define-typography-level(
+//       $font-size: 14px,
+//       $font-weight: regular,
+//       $font-family: Poppins,
+//     ),
+//   // Line-height must be unit-less fraction of the font-size.
+//   $input:
+//     mat.define-typography-level(
+//       $font-size: inherit,
+//       $line-height: 1.125,
+//       $font-weight: regular,
+//       $font-family: Poppins,
+//     ),
+// );
+
+$mat-density: 0;
+// @include mat.elevation(
+//   $zValue: 12,
+//   $color: #000,
+//   $opacity: 0.5
+// );
+
+$mat-core-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $mat-theme-primary,
+      accent: $mat-theme-accent,
+      warn: $mat-theme-warn,
+    ),
+    density: $mat-density,
+  )
+);
+
+$mat-dark-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $mat-dark-theme-primary,
+      accent: $mat-dark-theme-accent,
+      warn: $mat-dark-theme-warn,
+    ),
+  )
+);
+
+@include mat.all-component-themes($mat-core-theme);
