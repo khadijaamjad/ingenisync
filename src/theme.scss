@@ -225,3 +225,7 @@ $mat-dark-theme: mat.define-dark-theme(
 );
 
 @include mat.all-component-themes($mat-core-theme);
+
+.darkMode {
+  @include mat.all-component-themes($mat-dark-theme);
+}

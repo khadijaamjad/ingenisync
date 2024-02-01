@@ -5,11 +5,8 @@
     </button>
     <span>IngeniSync</span>
     <span></span>
-    <button mat-icon-button>
-      <mat-icon>favorite</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>share</mat-icon>
+    <button mat-icon-button (click)="toggleTheme()">
+      <mat-icon>{{ isDarkMode ? "wb_sunny" : "brightness_2" }}</mat-icon>
     </button>
   </mat-toolbar>
 

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ThemeService } from '../services/theme-service/theme.service';
 
 @Component({
   selector: 'app-home',
@@ -19,4 +20,15 @@ export class HomeComponent {
     //Settings
     { label: 'Settings', url: '/settings', isActive: false },
   ];
+
+  isDarkMode: boolean;
+
+  constructor(private themeService: ThemeService) {
+    this.isDarkMode = this.themeService.isDarkMode();
+  }
+
+  toggleTheme() {
+    this.isDarkMode = !this.isDarkMode;
+    this.themeService.setDarkMode(this.isDarkMode);
+  }
 }
