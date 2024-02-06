@@ -46,3 +46,7 @@ export function generateRandomDate(offset: number): string {
   const isoDateString = today.toISOString().split('T')[0];
   return isoDateString;
 }
+
+export function generateRandomCompletedStatus(): boolean {
+  return Math.random() > 0.5;
+}

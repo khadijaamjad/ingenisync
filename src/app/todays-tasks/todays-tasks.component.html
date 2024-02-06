@@ -1,9 +1,9 @@
 <h2>Today 12</h2>
 
-<mat-action-list #listName role="list">
+<div [hidden]="!tasksForToday">
   @for (item of tasksForToday; track item) {
-  <mat-list-item role="button"
-    >{{ item.task }} <mat-icon class="right">chevron_right</mat-icon>
-  </mat-list-item>
+  <p>
+    <mat-checkbox [formControlName]="item.id" [checked]="item.completed">{{ item.task }} </mat-checkbox>
+  </p>
   }
-</mat-action-list>
+</div>

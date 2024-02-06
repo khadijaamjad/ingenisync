@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 
 import { MaterialModule } from './material.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -21,10 +22,11 @@ import { ListItemModalComponent } from './list-item-modal/list-item-modal.compon
 import { CalendarComponent } from './calendar/calendar.component';
 import { CalendarUtilsComponent } from './calendar-utils/calendar-utils.component';
 import { WrongRouteComponent } from './wrong-route/wrong-route.component';
-import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { UpcomingTasksComponent } from './upcoming-tasks/upcoming-tasks.component';
 import { TodaysTasksComponent } from './todays-tasks/todays-tasks.component';
+
+import { ThemeService } from './services/theme-service/theme.service';
 
 @NgModule({
   declarations: [
@@ -60,7 +62,7 @@ import { TodaysTasksComponent } from './todays-tasks/todays-tasks.component';
       useFactory: adapterFactory,
     }),
   ],
-  providers: [],
+  providers: [ThemeService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

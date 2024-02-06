@@ -1,61 +1,56 @@
 <div class="row text-center">
   <div class="col-md-4">
-    <div class="btn-group">
-      <div
-        class="btn btn-primary"
+    <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+      <mat-button-toggle
         mwlCalendarPreviousView
         [view]="view"
         [(viewDate)]="viewDate"
         (viewDateChange)="viewDateChange.next(viewDate)"
+        >Previous</mat-button-toggle
       >
-        Previous
-      </div>
-      <div
-        class="btn btn-outline-secondary"
+      <mat-button-toggle
         mwlCalendarToday
         [(viewDate)]="viewDate"
         (viewDateChange)="viewDateChange.next(viewDate)"
+        >Today</mat-button-toggle
       >
-        Today
-      </div>
-      <div
-        class="btn btn-primary"
+      <mat-button-toggle
         mwlCalendarNextView
         [view]="view"
         [(viewDate)]="viewDate"
         (viewDateChange)="viewDateChange.next(viewDate)"
+        >Next</mat-button-toggle
       >
-        Next
-      </div>
-    </div>
+    </mat-button-toggle-group>
   </div>
+
+  <span class="spacer"></span>
   <div class="col-md-4">
-    <h3>{{ viewDate | calendarDate : view + "ViewTitle" : locale }}</h3>
+    <h2>{{ viewDate | calendarDate : view + "ViewTitle" : locale }}</h2>
   </div>
+  <span class="spacer"></span>
+
   <div class="col-md-4">
-    <div class="btn-group">
-      <div
-        class="btn btn-primary"
+    <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+      <mat-button-toggle
         (click)="viewChange.emit(CalendarView.Month)"
         [class.active]="view === CalendarView.Month"
       >
-        Month
-      </div>
-      <div
-        class="btn btn-primary"
+        Month</mat-button-toggle
+      >
+      <mat-button-toggle
         (click)="viewChange.emit(CalendarView.Week)"
         [class.active]="view === CalendarView.Week"
       >
-        Week
-      </div>
-      <div
-        class="btn btn-primary"
+        Week</mat-button-toggle
+      >
+      <mat-button-toggle
         (click)="viewChange.emit(CalendarView.Day)"
         [class.active]="view === CalendarView.Day"
       >
-        Day
-      </div>
-    </div>
+        Day</mat-button-toggle
+      >
+    </mat-button-toggle-group>
   </div>
 </div>
 <br />

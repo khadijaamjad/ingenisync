@@ -34,7 +34,7 @@ export class LoginComponent {
   onSubmit() {
     if (this.fg.valid) {
       const values = this.fg.getRawValue();
-      this.router.navigateByUrl('/home');
+      this.router.navigateByUrl('/dashboard');
     }
   }
 }
