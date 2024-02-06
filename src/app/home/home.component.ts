@@ -7,18 +7,18 @@ import { ThemeService } from '../services/theme-service/theme.service';
   styleUrl: './home.component.scss',
 })
 export class HomeComponent {
-  list: { label: string; url: string; isActive: boolean }[] = [
-    { label: 'Dashboard', url: '/dashboard', isActive: true },
+  list: { label: string; icon: string; url: string }[] = [
+    { label: 'Dashboard', icon: 'assessment', url: '/dashboard' },
 
     //Tasks Section
-    { label: 'Upcoming', url: '/upcoming', isActive: false },
-    { label: 'Today', url: '/today', isActive: false },
-    { label: 'Calendar', url: '/calendar', isActive: false },
-    { label: 'Sticky Wall', url: '/stickyWall', isActive: false },
-    { label: 'Lists', url: '/lists', isActive: false },
+    { label: 'Upcoming', icon: 'event', url: '/upcoming' },
+    { label: 'Today', icon: 'layers', url: '/today' },
+    { label: 'Calendar', icon: 'date_range', url: '/calendar' },
+    { label: 'Sticky Wall', icon: 'note', url: '/stickyWall' },
+    { label: 'Lists', icon: 'view_list', url: '/lists' },
 
     //Settings
-    { label: 'Settings', url: '/settings', isActive: false },
+    { label: 'Settings', icon: 'settings', url: '/settings' },
   ];
 
   isDarkMode: boolean;
@@ -29,6 +29,6 @@ export class HomeComponent {
 
   toggleTheme() {
     this.isDarkMode = !this.isDarkMode;
-    this.themeService.setDarkMode(this.isDarkMode);
+    this.themeService.setDarkMode(!this.isDarkMode);
   }
 }

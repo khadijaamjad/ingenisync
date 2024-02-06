@@ -1,0 +1,17 @@
+@use "sass:map";
+@use "@angular/material" as mat;
+
+@mixin color($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent-palette: map.get($color-config, "accent");
+  $foreground: map.get($theme, "foreground");
+
+  .mat-card {
+    background-color: mat.get-color-from-palette($accent-palette, 50);
+    @include mat.elevation(5);
+  }
+
+  // .active-link {
+  //   background-color: mat.get-color-from-palette($accent-palette, 50);
+  // }
+}
