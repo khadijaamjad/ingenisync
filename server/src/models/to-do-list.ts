@@ -1,5 +1,5 @@
 import mongoose, { Document, Schema } from 'mongoose';
-import { ToDoItem } from './to-do-item';
+import { ToDoItem, toDoItemSchema } from './to-do-item';
 
 interface ToDoList extends Document {
   title: string;
@@ -8,7 +8,7 @@ interface ToDoList extends Document {
 
 const toDoListSchema: Schema<ToDoList> = new Schema({
   title: { type: String, required: true, max: 100 },
-  toDoItems: [{ type: Schema.Types.ObjectId, ref: 'ToDoItem' }],
+  toDoItems: [toDoItemSchema],
 });
 
 export const ToDoList = mongoose.model('ToDoList', toDoListSchema);

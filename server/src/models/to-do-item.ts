@@ -6,7 +6,7 @@ export interface ToDoItem extends Document {
   completed?: boolean;
 }
 
-const toDoItemSchema: Schema<ToDoItem> = new Schema({
+export const toDoItemSchema: Schema<ToDoItem> = new Schema({
   description: { type: String, required: true, max: 200 },
   dueDate: { type: Date, required: true },
   completed: { type: Boolean, required: false, default: false },
