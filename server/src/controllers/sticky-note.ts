@@ -5,7 +5,7 @@ export const add = async (req, res) => {
 
   var stickyNote = new StickyNote({
     title: body.title,
-    description: body.description,
+    noteText: body.noteText,
   });
 
   try {
@@ -31,7 +31,7 @@ export const update = async (req, res) => {
 
 export const deleteSingle = async (req, res) => {
   try {
-    const stickyNote = StickyNote.findByIdAndDelete(req.params.id);
+    const stickyNote = await StickyNote.findByIdAndDelete(req.params.id);
     res.send(stickyNote);
   } catch (error) {
     res.status(500).send(error);
@@ -40,7 +40,7 @@ export const deleteSingle = async (req, res) => {
 
 export const getSingle = async (req, res) => {
   try {
-    const stickyNote = StickyNote.find(req.params.id);
+    const stickyNote = await StickyNote.findById(req.params.id);
     res.send(stickyNote);
   } catch (error) {
     res.status(500).send(error);
@@ -49,9 +49,10 @@ export const getSingle = async (req, res) => {
 
 export const getAll = async (req, res) => {
   try {
-    const stickyNotes = StickyNote.find({});
+    const stickyNotes = await StickyNote.find({});
     res.send(stickyNotes);
   } catch (error) {
+    console.error(error);
     res.status(500).send(error);
   }
 };

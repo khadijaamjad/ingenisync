@@ -18,14 +18,24 @@ if (!ATLAS_URI) {
 
 connectToDatabase(ATLAS_URI)
   .then(() => {
+    var router = express.Router();
+
+    router.use('/stickyNote', StickyNoteRoutes);
+    router.use('/toDoItem', ToDoItemRoutes);
+    router.use('/toDoList', ToDoListRoutes);
+
+    router.get("/", function(req, res) {
+      res.json({ message: "IngeniSync API is up and running!" });
+    });
+
     const app = express();
     app.use(bodyParser.json());
-    app.use('/', StickyNoteRoutes, ToDoItemRoutes, ToDoListRoutes);
     app.use(cors());
+    app.use("/api", router);
 
     app.listen(5200, () => {
       console.log(
-        `IngeniSync backend server running at http://localhost:5200...`
+        `IngeniSync API running at http://localhost:5200...`
       );
     });
   })

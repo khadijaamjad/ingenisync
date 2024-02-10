@@ -1,16 +1,17 @@
-import { ToDoList } from '../models/to-do-list';
+import { User } from '../models/user';
 
 export const add = async (req, res) => {
   const body = req.body;
 
-  var toDoList = new ToDoList({
-    title: body.title,
-    toDoItems: body.toDoItems,
+  var user = new User({
+    name: body.name,
+    email: body.email,
+    password: body.password
   });
 
   try {
-    await toDoList.save();
-    res.send(toDoList);
+    await user.save();
+    res.send(user);
   } catch (error) {
     res.status(500).send(error);
   }
@@ -18,12 +19,12 @@ export const add = async (req, res) => {
 
 export const update = async (req, res) => {
   try {
-    const toDoList = await ToDoList.findByIdAndUpdate(
+    const user = await User.findByIdAndUpdate(
       req.params.id,
       { $set: req.body },
       { new: true }
     );
-    res.send(toDoList);
+    res.send(user);
   } catch (error) {
     res.status(500).send(error);
   }
@@ -31,8 +32,8 @@ export const update = async (req, res) => {
 
 export const deleteSingle = async (req, res) => {
   try {
-    const toDoList = await ToDoList.findByIdAndDelete(req.params.id);
-    res.send(toDoList);
+    const user = await User.findByIdAndDelete(req.params.id);
+    res.send(user);
   } catch (error) {
     res.status(500).send(error);
   }
@@ -40,8 +41,8 @@ export const deleteSingle = async (req, res) => {
 
 export const getSingle = async (req, res) => {
   try {
-    const toDoList = await ToDoList.findById(req.params.id);
-    res.send(toDoList);
+    const user = await User.findById(req.params.id);
+    res.send(user);
   } catch (error) {
     res.status(500).send(error);
   }
@@ -49,9 +50,10 @@ export const getSingle = async (req, res) => {
 
 export const getAll = async (req, res) => {
   try {
-    const toDoLists = await ToDoList.find({});
-    res.send(toDoLists);
+    const users = await User.find({});
+    res.send(users);
   } catch (error) {
+    console.error(error);
     res.status(500).send(error);
   }
 };

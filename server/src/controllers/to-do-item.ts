@@ -32,7 +32,7 @@ export const update = async (req, res) => {
 
 export const deleteSingle = async (req, res) => {
   try {
-    const toDoItem = ToDoItem.findByIdAndDelete(req.params.id);
+    const toDoItem = await ToDoItem.findByIdAndDelete(req.params.id);
     res.send(toDoItem);
   } catch (error) {
     res.status(500).send(error);
@@ -41,7 +41,7 @@ export const deleteSingle = async (req, res) => {
 
 export const getSingle = async (req, res) => {
   try {
-    const toDoItem = ToDoItem.find(req.params.id);
+    const toDoItem = await ToDoItem.findById(req.params.id);
     res.send(toDoItem);
   } catch (error) {
     res.status(500).send(error);
@@ -50,7 +50,7 @@ export const getSingle = async (req, res) => {
 
 export const getAll = async (req, res) => {
   try {
-    const toDoItems = ToDoItem.find({});
+    const toDoItems = await ToDoItem.find({});
     res.send(toDoItems);
   } catch (error) {
     res.status(500).send(error);

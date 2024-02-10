@@ -12,23 +12,21 @@ Before running the server, make sure you have the following installed:
 - [MongoDB](https://www.mongodb.com/try/download/community)
 - [npm](https://www.npmjs.com/) (comes with Node.js)
 
----
-
 ## Setup
 
 1. **Clone the Repository:**
-   ```bash
+   ```
    git clone https://github.com/khadijaamjad/ingenisync.git
    cd ingenisync
    ```
 
 2. **Install Dependencies:**
-   ```bash
+   ```
    npm install
    ```
 
 3. **Configure Environment Variables:**
-   Create a `.env` file in the root directory and add the following:
+   Create a `.env` file in the root directory and add the url to your DB:
    ```
    ATLAS_URI=mongodb://localhost:27017/database-name
    ```
