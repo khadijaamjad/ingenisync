@@ -18,9 +18,9 @@
 </div>
 
 <mat-action-list #listName role="list">
-  @for (item of listNames; track item) {
-  <mat-list-item role="button"
-    >{{ item }} <mat-icon class="right">chevron_right</mat-icon>
+  @for (item of toDoLists; track item) {
+  <mat-list-item role="button" (click)="this.navigateToList(item)"
+    >{{ item.title }} <mat-icon class="right">chevron_right</mat-icon>
   </mat-list-item>
   }
 </mat-action-list>

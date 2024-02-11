@@ -1,3 +1,4 @@
+import { Observable, of } from 'rxjs';
 import Swal from 'sweetalert2';
 
 export function isSuccessResponse(data: any) {
@@ -50,3 +51,10 @@ export function generateRandomDate(offset: number): string {
 export function generateRandomCompletedStatus(): boolean {
   return Math.random() > 0.5;
 }
+
+export const handleError = <T>(errorResp?: T) => {
+  return (error: any): Observable<T> => {
+    if (error.status === 400) getErrorAlert(error.error.message);
+    return of(errorResp as T);
+  };
+};

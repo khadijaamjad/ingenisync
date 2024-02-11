@@ -3,7 +3,7 @@
 <div [hidden]="!tasksForToday">
   @for (item of tasksForToday; track item) {
   <p>
-    <mat-checkbox [formControlName]="item.id" [checked]="item.completed">{{ item.task }} </mat-checkbox>
+    <mat-checkbox [formControlName]="item._id || 'help'" [checked]="item.completed">{{ item.description }} </mat-checkbox>
   </p>
   }
 </div>

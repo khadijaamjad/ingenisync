@@ -4,3 +4,10 @@
   grid-template: auto/ auto auto auto;
   gap: 10px;
 }
+
+.add-card {
+  height: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

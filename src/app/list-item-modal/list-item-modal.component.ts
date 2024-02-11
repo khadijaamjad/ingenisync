@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../services/api-service/api-service.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { isSuccessResponse, getSuccessAlert } from '../../helpers/utils';
-import { ListItem } from '../../models/ListItem';
+import { ToDoItem } from '../../models/ToDoItem';
 
 @Component({
   selector: 'app-list-item-modal',
@@ -15,7 +15,7 @@ export class ListItemModalComponent implements OnInit {
   isActive = true;
   isAddMode = true;
   submitted = false;
-  selectedList: ListItem;
+  selectedList: ToDoItem;
   description: string;
   formGroup!: FormGroup;
 
@@ -23,7 +23,7 @@ export class ListItemModalComponent implements OnInit {
     private fb: FormBuilder,
     private apiService: ApiService,
     private dialogRef: MatDialogRef<ListItemModalComponent>,
-    @Inject(MAT_DIALOG_DATA) data: ListItem
+    @Inject(MAT_DIALOG_DATA) data: ToDoItem
   ) {
     this.selectedList = data;
     this.isAddMode = !this.selectedList;
@@ -68,7 +68,7 @@ export class ListItemModalComponent implements OnInit {
     const req = this.formGroup?.value;
 
     this.apiService
-      .editListItem(req, this.selectedList.id)
+      .editListItem(req, this.selectedList._id)
       .subscribe((data) => {
         if (isSuccessResponse(data)) this.saveAndClose();
       })

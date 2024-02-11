@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { StickyNote } from '../../models/StickyNote';
 
 @Component({
   selector: 'app-sticky-wall-card',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './sticky-wall-card.component.scss'
 })
 export class StickyWallCardComponent {
-
+  @Input() note: StickyNote | undefined;
 }

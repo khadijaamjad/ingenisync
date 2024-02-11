@@ -4,14 +4,39 @@
 @mixin color($theme) {
   $color-config: mat.get-color-config($theme);
   $accent-palette: map.get($color-config, "accent");
+  $primary-palette: map.get($color-config, "primary");
   $foreground: map.get($theme, "foreground");
 
   .mat-card {
-    background-color: mat.get-color-from-palette($accent-palette, 50);
+    background: mat.get-color-from-palette($accent-palette, 601);
     @include mat.elevation(5);
   }
 
   // .active-link {
   //   background-color: mat.get-color-from-palette($accent-palette, 50);
   // }
+
+  /* Scroll bar styling*/
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgb(204, 231, 210);
+
+  // box-shadow: inset 0 0 5px rgb(204, 231, 210);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: mat.get-color-from-palette($primary-palette, 601);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: mat.get-color-from-palette($accent-palette, 701);
+}
 }

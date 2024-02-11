@@ -1,13 +1,13 @@
-<mat-card>
+<mat-card class="card-height-limit">
   <mat-card-header>
-    <mat-card-title>Shiba Inu</mat-card-title>
+    <mat-card-title
+      ><b>{{ note?.title }}</b></mat-card-title
+    >
     <mat-card-subtitle>Edited 2 days ago</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <p>This card indeterminates progress bar.</p>
-    <p>This card indeterminates indeterminates indeterminates progress bar.</p>
-    <p>This card indeterminates progress bar.</p>
-    <p>This card indeterminates progress bar.</p>
-    <p>This card indeterminates progress bar.</p>
+    <ng-container *ngFor="let paragraph of note?.noteText?.split('\n')">
+      <p>{{ paragraph }}</p>
+    </ng-container>
   </mat-card-content>
 </mat-card>

@@ -17,11 +17,13 @@
 </div>
 
 <div class="grid">
-  <app-sticky-wall-card></app-sticky-wall-card>
-  <app-sticky-wall-card></app-sticky-wall-card>
-  <app-sticky-wall-card></app-sticky-wall-card>
-  <app-sticky-wall-card></app-sticky-wall-card>
-  <app-sticky-wall-card></app-sticky-wall-card>
-  <app-sticky-wall-card></app-sticky-wall-card>
-  <app-sticky-wall-card></app-sticky-wall-card>
+  @for (note of notes; track note) {
+  <app-sticky-wall-card [note]="note"></app-sticky-wall-card>
+  }
+  <mat-card class="card-height-limit">
+    <mat-card-content class="add-card">
+      <mat-icon color="primary">library_add</mat-icon>
+    </mat-card-content>
+  </mat-card>
+
 </div>

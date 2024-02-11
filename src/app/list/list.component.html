@@ -1,11 +1,10 @@
 <mat-card class="list-card">
   <mat-card-header>
     <div class="row">
-      <div class="col">
-        <h2>Shoes</h2>
+      <div class="col-md-10" >
+        <h2>{{ toDoList?.title }}</h2>
       </div>
-
-      <div class="col">
+      <div class="col-md-2">
         <button
           mat-icon-button
           aria-label="Add new item"
@@ -22,8 +21,8 @@
 
   <mat-card-content>
     <mat-selection-list #entries>
-      @for (entry of listEntries; track entry) {
-      <mat-list-option>{{ entry }}</mat-list-option>
+      @for (entry of toDoList?.toDoItems; track entry) {
+      <mat-list-option [selected]="entry.completed">{{ entry.description }}</mat-list-option>
       <mat-divider></mat-divider>
       }
     </mat-selection-list>
@@ -35,7 +34,9 @@
       matTooltip="Add new item"
       color="primary"
       type="button"
+      class="right"
     >
+      <mat-icon>add</mat-icon>
       Add new item
     </button>
   </mat-card-content>
