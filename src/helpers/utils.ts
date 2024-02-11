@@ -10,7 +10,7 @@ export function getSuccessAlert(msg: string) {
     title: 'Success',
     text: msg,
     icon: 'success',
-    confirmButtonColor: '#04336d',
+    confirmButtonColor: '#04336d'
   });
 }
 
@@ -19,7 +19,7 @@ export function getErrorAlert(msg: string) {
     title: 'Error',
     text: msg || 'An unexpected error occurred.',
     icon: 'error',
-    confirmButtonColor: '#04336d',
+    confirmButtonColor: '#04336d'
   });
 }
 
@@ -33,7 +33,7 @@ export function generateRandomTask(): string {
     'Prepare for team workshop',
     'Attend client call',
     'Read new industry articles',
-    'Update project timeline',
+    'Update project timeline'
   ];
 
   const randomIndex = Math.floor(Math.random() * tasks.length);

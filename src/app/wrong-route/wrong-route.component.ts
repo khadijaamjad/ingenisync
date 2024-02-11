@@ -5,6 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: './wrong-route.component.html',
   styleUrl: './wrong-route.component.scss'
 })
-export class WrongRouteComponent {
-
-}
+export class WrongRouteComponent {}

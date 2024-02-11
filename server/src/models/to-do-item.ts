@@ -9,7 +9,7 @@ export interface ToDoItem extends Document {
 export const toDoItemSchema: Schema<ToDoItem> = new Schema({
   description: { type: String, required: true, max: 200 },
   dueDate: { type: Date, required: true },
-  completed: { type: Boolean, required: false, default: false },
+  completed: { type: Boolean, required: false, default: false }
 });
 
 export const ToDoItem = mongoose.model('ToDoItem', toDoItemSchema);

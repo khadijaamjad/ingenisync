@@ -8,7 +8,7 @@ interface ToDoList extends Document {
 
 const toDoListSchema: Schema<ToDoList> = new Schema({
   title: { type: String, required: true, max: 100 },
-  toDoItems: [toDoItemSchema],
+  toDoItems: [toDoItemSchema]
 });
 
 export const ToDoList = mongoose.model('ToDoList', toDoListSchema);

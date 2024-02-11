@@ -25,14 +25,14 @@ const routes: Routes = [
       { path: 'list', component: ListComponent },
       { path: 'calendar', component: CalendarComponent },
       { path: 'upcoming', component: UpcomingTasksComponent },
-      { path: 'today', component: TodaysTasksComponent },
-    ],
+      { path: 'today', component: TodaysTasksComponent }
+    ]
   },
-  { path: '**', component: WrongRouteComponent },
+  { path: '**', component: WrongRouteComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class AppRoutingModule {}

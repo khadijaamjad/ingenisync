@@ -10,7 +10,7 @@ const expiresIn = '1h';
 export const generateAccessToken = (user) => {
   const payload = {
     userId: user._id,
-    email: user.email,
+    email: user.email
   };
 
   return jwt.sign(payload, secretKey, { expiresIn });

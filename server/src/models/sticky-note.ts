@@ -7,7 +7,7 @@ interface StickyNote extends Document {
 
 const stickyNoteSchema: Schema<StickyNote> = new Schema({
   title: { type: String, required: true, max: 100 },
-  noteText: { type: String, required: true, max: 500 },
+  noteText: { type: String, required: true, max: 500 }
 });
 
 export const StickyNote = mongoose.model('StickyNote', stickyNoteSchema);

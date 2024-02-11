@@ -1,4 +1,4 @@
-import { ToDoItem } from "./ToDoItem";
+import { ToDoItem } from './ToDoItem';
 
 export interface ToDoList {
   _id: string;

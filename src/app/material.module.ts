@@ -96,8 +96,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     OverlayModule,
     PortalModule,
     ScrollingModule,
-    DialogModule,
-  ],
+    DialogModule
+  ]
 })
 export class MaterialModule {}
-

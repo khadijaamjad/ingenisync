@@ -43,7 +43,7 @@ import { ThemeService } from './services/theme-service/theme.service';
     WrongRouteComponent,
     HomeComponent,
     UpcomingTasksComponent,
-    TodaysTasksComponent,
+    TodaysTasksComponent
   ],
   imports: [
     RouterLink,
@@ -59,10 +59,10 @@ import { ThemeService } from './services/theme-service/theme.service';
     HttpClientModule,
     CalendarModule.forRoot({
       provide: DateAdapter,
-      useFactory: adapterFactory,
-    }),
+      useFactory: adapterFactory
+    })
   ],
   providers: [ThemeService],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

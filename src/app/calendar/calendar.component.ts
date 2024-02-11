@@ -11,7 +11,7 @@ import {
   endOfWeek,
   startOfDay,
   endOfDay,
-  format,
+  format
 } from 'date-fns';
 import { Observable } from 'rxjs';
 import { colors } from '../calendar-utils/colors';
@@ -37,7 +37,7 @@ function getTimezoneOffsetString(date: Date): string {
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrl: './calendar.component.scss',
+  styleUrl: './calendar.component.scss'
 })
 export class CalendarComponent implements OnInit {
   view: CalendarView = CalendarView.Month;
@@ -58,13 +58,13 @@ export class CalendarComponent implements OnInit {
     const getStart: any = {
       month: startOfMonth,
       week: startOfWeek,
-      day: startOfDay,
+      day: startOfDay
     }[this.view];
 
     const getEnd: any = {
       month: endOfMonth,
       week: endOfWeek,
-      day: endOfDay,
+      day: endOfDay
     }[this.view];
 
     const params = new HttpParams()
@@ -80,7 +80,7 @@ export class CalendarComponent implements OnInit {
 
     this.events$ = this.http
       .get<{ results: Film[] }>('https://api.themoviedb.org/3/discover/movie', {
-        params,
+        params
       })
       .pipe(
         map((response) => {
@@ -94,8 +94,8 @@ export class CalendarComponent implements OnInit {
               color: colors.yellow,
               allDay: true,
               meta: {
-                film,
-              },
+                film
+              }
             };
           });
         })
@@ -104,7 +104,7 @@ export class CalendarComponent implements OnInit {
 
   dayClicked({
     date,
-    events,
+    events
   }: {
     date: Date;
     events: CalendarEvent<{ film: Film }>[];

@@ -9,9 +9,8 @@ describe('StickyWallCardComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [StickyWallCardComponent]
-    })
-    .compileComponents();
-    
+    }).compileComponents();
+
     fixture = TestBed.createComponent(StickyWallCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

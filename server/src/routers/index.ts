@@ -1,11 +1,6 @@
-import  StickyNoteRoutes from "./sticky-note";
-import  ToDoItemRoutes from "./to-do-item";
-import  ToDoListRoutes from "./to-do-list";
-import  UserRoutes from "./user";
+import StickyNoteRoutes from './sticky-note';
+import ToDoItemRoutes from './to-do-item';
+import ToDoListRoutes from './to-do-list';
+import UserRoutes from './user';
 
-export {
-  StickyNoteRoutes,
-  ToDoItemRoutes,
-  ToDoListRoutes,
-  UserRoutes
-}
+export { StickyNoteRoutes, ToDoItemRoutes, ToDoListRoutes, UserRoutes };

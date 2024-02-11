@@ -8,7 +8,7 @@ import { ToDoItem } from '../../models/ToDoItem';
 @Component({
   selector: 'app-list-item-modal',
   templateUrl: './list-item-modal.component.html',
-  styleUrl: './list-item-modal.component.scss',
+  styleUrl: './list-item-modal.component.scss'
 })
 export class ListItemModalComponent implements OnInit {
   loading = false;
@@ -32,7 +32,7 @@ export class ListItemModalComponent implements OnInit {
 
   ngOnInit() {
     this.formGroup = this.fb.group({
-      name: ['', Validators.required],
+      name: ['', Validators.required]
     });
 
     if (!this.isAddMode) {

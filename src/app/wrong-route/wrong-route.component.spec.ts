@@ -9,9 +9,8 @@ describe('WrongRouteComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [WrongRouteComponent]
-    })
-    .compileComponents();
-    
+    }).compileComponents();
+
     fixture = TestBed.createComponent(WrongRouteComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

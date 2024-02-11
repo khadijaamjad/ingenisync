@@ -7,7 +7,7 @@ import { AuthService } from '../../app/services/auth-service/auth-service.servic
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss',
+  styleUrl: './login.component.scss'
 })
 export class LoginComponent {
   fg: FormGroup;
@@ -23,7 +23,7 @@ export class LoginComponent {
     sessionStorage.clear();
     this.fg = this.formBuilder.group({
       username: ['', Validators.required],
-      password: ['', Validators.required],
+      password: ['', Validators.required]
     });
   }
 

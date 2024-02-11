@@ -9,9 +9,8 @@ describe('StickyWallComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [StickyWallComponent]
-    })
-    .compileComponents();
-    
+    }).compileComponents();
+
     fixture = TestBed.createComponent(StickyWallComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

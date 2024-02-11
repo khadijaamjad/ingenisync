@@ -4,7 +4,7 @@ import { ThemeService } from '../services/theme-service/theme.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss',
+  styleUrl: './home.component.scss'
 })
 export class HomeComponent {
   list: { label: string; icon: string; url: string }[] = [
@@ -18,7 +18,7 @@ export class HomeComponent {
     { label: 'Lists', icon: 'view_list', url: '/lists' },
 
     //Settings
-    { label: 'Settings', icon: 'settings', url: '/settings' },
+    { label: 'Settings', icon: 'settings', url: '/settings' }
   ];
 
   isDarkMode: boolean;

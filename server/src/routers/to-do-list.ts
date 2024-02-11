@@ -4,7 +4,7 @@ import {
   update,
   deleteSingle,
   getSingle,
-  getAll,
+  getAll
 } from '../controllers/to-do-list';
 
 const router: Router = express.Router();

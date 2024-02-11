@@ -4,7 +4,7 @@ import {
   update,
   deleteSingle,
   getSingle,
-  getAll,
+  getAll
 } from '../controllers/sticky-note';
 
 const router: Router = express.Router();

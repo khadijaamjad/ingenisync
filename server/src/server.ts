@@ -8,7 +8,7 @@ import {
   StickyNoteRoutes,
   ToDoItemRoutes,
   ToDoListRoutes,
-  UserRoutes,
+  UserRoutes
 } from './routers';
 
 // Load environment variables from the .env file, where the ATLAS_URI is configured

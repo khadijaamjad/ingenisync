@@ -9,7 +9,7 @@ interface User extends Document {
 const userSchema: Schema<User> = new Schema({
   name: { type: String, required: true, max: 50 },
   email: { type: String, required: true, max: 30 },
-  password: { type: String, required: true, max: 10 },
+  password: { type: String, required: true, max: 10 }
 });
 
 export const User = mongoose.model('User', userSchema);

@@ -6,7 +6,7 @@ export const add = async (req, res) => {
   var toDoItem = new ToDoItem({
     description: body.description,
     dueDate: body.dueDate,
-    completed: body.completed,
+    completed: body.completed
   });
 
   try {

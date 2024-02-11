@@ -5,7 +5,7 @@ export const add = async (req, res) => {
 
   var toDoList = new ToDoList({
     title: body.title,
-    toDoItems: body.toDoItems,
+    toDoItems: body.toDoItems
   });
 
   try {

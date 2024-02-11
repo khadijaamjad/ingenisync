@@ -5,7 +5,7 @@ export const add = async (req, res) => {
 
   var stickyNote = new StickyNote({
     title: body.title,
-    noteText: body.noteText,
+    noteText: body.noteText
   });
 
   try {
