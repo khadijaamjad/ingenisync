@@ -1,10 +1,12 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError } from 'rxjs';
-import { StickyNote } from '../../../models/StickyNote';
+import { HttpClient } from '@angular/common/http';
 import { ENDPOINTS } from '../../../helpers/constants';
 import { handleError } from '../../../helpers/utils';
-import { ToDoList } from '../../../models/ToDoList';
+
+import { ToDoItem } from '../../../models/ToDoItem';
+import { StickyNote } from '../../../models/StickyNote';
+import { TaskTimelineEnum, ToDoList } from '../../../models/ToDoList';
 
 @Injectable({
   providedIn: 'root'
@@ -76,6 +78,27 @@ export class ApiService {
     return this.httpClient
       .put<ToDoList>(ENDPOINTS.TO_DO_LIST + `/${stickyNote._id}`, stickyNote)
       .pipe(catchError(handleError<ToDoList>()));
+  }
+
+  //#endregion
+
+  //#region UPCOMING TASKS
+
+  getUpcomingDueItems(timeline: TaskTimelineEnum): Observable<ToDoItem[]> {
+    let endpoint = ENDPOINTS.UPCOMING_TASKS_TODAY;
+
+    switch (timeline) {
+      case TaskTimelineEnum.Tomorrow:
+        endpoint = ENDPOINTS.UPCOMING_TASKS_TOMORROW
+        break;
+      case TaskTimelineEnum.ThisWeek:
+        endpoint = ENDPOINTS.UPCOMING_TASKS_WEEK;
+        break;
+    }
+
+    return this.httpClient
+      .get<ToDoItem[]>(endpoint)
+      .pipe(catchError(handleError<ToDoItem[]>()));
   }
 
   //#endregion

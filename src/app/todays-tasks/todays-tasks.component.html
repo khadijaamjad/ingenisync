@@ -1,9 +1,13 @@
-<h2>Today 12</h2>
+<h2>Today {{ tasksForToday.length ? tasksForToday.length : '' }}</h2>
 
 <div [hidden]="!tasksForToday">
   @for (item of tasksForToday; track item) {
-  <p>
-    <mat-checkbox [formControlName]="item._id || 'help'" [checked]="item.completed">{{ item.description }} </mat-checkbox>
-  </p>
+    <p>
+      <mat-checkbox
+        [formControlName]="item._id || 'test'"
+        [checked]="item.completed"
+        >{{ item.description }}
+      </mat-checkbox>
+    </p>
   }
 </div>

@@ -5,3 +5,9 @@ export interface ToDoList {
   title: string;
   toDoItems: ToDoItem[];
 }
+
+export enum TaskTimelineEnum {
+  Today,
+  Tomorrow,
+  ThisWeek
+}
