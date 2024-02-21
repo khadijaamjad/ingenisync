@@ -6,10 +6,12 @@ export const ENDPOINTS = {
   TO_DO_LIST: BASE_API_URL + '/toDoList',
   UPCOMING_TASKS_TODAY: BASE_API_URL + '/toDoList/today',
   UPCOMING_TASKS_TOMORROW: BASE_API_URL + '/toDoList/tomorrow',
-  UPCOMING_TASKS_WEEK: BASE_API_URL + '/toDoList/week',
+  UPCOMING_TASKS_WEEK: BASE_API_URL + '/toDoList/week'
 };
 
 export enum MESSAGES {
   INVALID_USERNAME_PASSWORD = 'Invalid username or password.',
   ERROR_FROM_API = 'Error received from API.'
 }
+
+export const TEXT_FIELDS_MAX_LENGTH = 30;

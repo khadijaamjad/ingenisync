@@ -10,6 +10,7 @@
       color="primary"
       type="button"
       class="right"
+      (click)="openStickyNoteModal()"
     >
       <mat-icon>library_add</mat-icon>
     </button>
@@ -18,12 +19,11 @@
 
 <div class="grid">
   @for (note of notes; track note) {
-  <app-sticky-wall-card [note]="note"></app-sticky-wall-card>
+    <app-sticky-wall-card [note]="note" (click)="openStickyNoteModal(note)"></app-sticky-wall-card>
   }
-  <mat-card class="card-height-limit">
+  <mat-card class="card-height-limit" (click)="openStickyNoteModal()">
     <mat-card-content class="add-card">
       <mat-icon color="primary">library_add</mat-icon>
     </mat-card-content>
   </mat-card>
-
 </div>

@@ -7,5 +7,5 @@ import { StickyNote } from '../../models/StickyNote';
   styleUrl: './sticky-wall-card.component.scss'
 })
 export class StickyWallCardComponent {
-  @Input() note: StickyNote | undefined;
+  @Input() note!: StickyNote;
 }

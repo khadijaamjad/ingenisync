@@ -1,5 +1,20 @@
 <h2>Today {{ tasksForToday.length ? tasksForToday.length : '' }}</h2>
 
+<div [hidden]="tasksForToday">
+  <div class="image-container">
+    <img class="no-lists-image" />
+  </div>
+  <div class="text-container">
+    <h3>Looks like you're all done!</h3>
+    <p class="paragraph-top">
+      You don't have any tasks for today. Take a break or add a task to one of your lists!
+    </p>
+    <button mat-raised-button color="primary" routerLink="/lists">
+      Create List
+    </button>
+  </div>
+</div>
+
 <div [hidden]="!tasksForToday">
   @for (item of tasksForToday; track item) {
     <p>

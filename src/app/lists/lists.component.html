@@ -17,10 +17,23 @@
   </div>
 </div>
 
-<mat-action-list #listName role="list">
+<div [hidden]="toDoLists?.length">
+  <div class="image-container">
+    <img class="no-lists-image" />
+  </div>
+  <div class="text-container">
+    <h3>Looks like you're new here</h3>
+    <p class="paragraph-top">You don't have any lists yet. Start by creating your first list!</p>
+    <button mat-raised-button color="primary" (click)="openListModal()">
+      Add a List
+    </button>
+  </div>
+</div>
+
+<mat-action-list [hidden]="!toDoLists?.length" #listName role="list">
   @for (item of toDoLists; track item) {
-  <mat-list-item role="button" (click)="this.navigateToList(item)"
-    >{{ item.title }} <mat-icon class="right">chevron_right</mat-icon>
-  </mat-list-item>
+    <mat-list-item role="button" (click)="this.navigateToList(item)"
+      >{{ item.title }} <mat-icon class="right">chevron_right</mat-icon>
+    </mat-list-item>
   }
 </mat-action-list>

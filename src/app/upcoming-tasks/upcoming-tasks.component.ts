@@ -26,23 +26,23 @@ export class UpcomingTasksComponent implements OnInit {
       .getUpcomingDueItems(TaskTimelineEnum.Today)
       .subscribe((apiResponse) => {
         this.tasksForToday = apiResponse?.length ? apiResponse : [];
+        this.totalTasksDueThisWeek += this.tasksForThisWeek.length;
       });
+
     // Get tasks for tomorrow
     this.apiService
       .getUpcomingDueItems(TaskTimelineEnum.Tomorrow)
       .subscribe((apiResponse) => {
         this.tasksForTomorrow = apiResponse?.length ? apiResponse : [];
+        this.totalTasksDueThisWeek += this.tasksForTomorrow.length;
       });
+
     // Get tasks for this week
     this.apiService
       .getUpcomingDueItems(TaskTimelineEnum.ThisWeek)
       .subscribe((apiResponse) => {
         this.tasksForThisWeek = apiResponse?.length ? apiResponse : [];
+        this.totalTasksDueThisWeek += this.tasksForThisWeek.length;
       });
-
-    this.totalTasksDueThisWeek =
-      this.tasksForThisWeek.length +
-      this.tasksForTomorrow.length +
-      this.tasksForToday.length;
   }
 }

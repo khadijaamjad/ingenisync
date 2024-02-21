@@ -25,6 +25,8 @@ import { WrongRouteComponent } from './wrong-route/wrong-route.component';
 import { HomeComponent } from './home/home.component';
 import { UpcomingTasksComponent } from './upcoming-tasks/upcoming-tasks.component';
 import { TodaysTasksComponent } from './todays-tasks/todays-tasks.component';
+import { StickyWallModalComponent } from './sticky-wall-modal/sticky-wall-modal.component';
+import { ErrorMsgComponent } from './error-msg/error-msg.component';
 
 import { ThemeService } from './services/theme-service/theme.service';
 
@@ -43,7 +45,9 @@ import { ThemeService } from './services/theme-service/theme.service';
     WrongRouteComponent,
     HomeComponent,
     UpcomingTasksComponent,
-    TodaysTasksComponent
+    TodaysTasksComponent,
+    StickyWallModalComponent,
+    ErrorMsgComponent
   ],
   imports: [
     RouterLink,
