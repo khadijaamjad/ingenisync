@@ -23,6 +23,22 @@ export function getErrorAlert(msg: string) {
   });
 }
 
+export function getConfirmationAlert(message?: string) {
+  return Swal.fire({
+    title: 'Confirmation',
+    text: message
+      ? message
+      : 'Are you sure you want to proceed with deletion?',
+    icon: 'warning',
+    showConfirmButton: true,
+    showCancelButton: true,
+    confirmButtonText: 'Yes, Delete',
+    cancelButtonColor: '#ff110e',
+    confirmButtonColor: '#04336d',
+    reverseButtons: true
+  });
+}
+
 // Function to generate random tasks
 export function generateRandomTask(): string {
   const tasks = [

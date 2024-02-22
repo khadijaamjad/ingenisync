@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { StickyWallModalComponent } from '../sticky-wall-modal/sticky-wall-modal.component';
+import { getConfirmationAlert, getSuccessAlert, isSuccessResponse } from '../../helpers/utils';
+import { MESSAGES } from '../../helpers/constants';
 import { StickyNote } from '../../models/StickyNote';
 import { ApiService } from '../services/api-service/api-service.service';
-import { StickyWallModalComponent } from '../sticky-wall-modal/sticky-wall-modal.component';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-sticky-wall',
@@ -28,12 +30,33 @@ export class StickyWallComponent implements OnInit {
     });
   }
 
+  deleteStickyNote(stickyNote: StickyNote) {
+    getConfirmationAlert().then((result) => {
+      if (result.isConfirmed) {
+        const noteToDelete = this.notes?.find(
+          (x) => x._id === stickyNote._id
+        );
+        if (!noteToDelete) return;
+
+        this.apiService
+          .deleteStickyNote(noteToDelete)
+          .subscribe((apiResponse) => {
+            if (isSuccessResponse(apiResponse)) {
+              getSuccessAlert(MESSAGES.NOTE_DELETED);
+              this.ngOnInit();
+            }
+          });
+      }
+    });
+  }
+
   openStickyNoteModal(note?: StickyNote) {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.autoFocus = true;
     dialogConfig.data = note;
-    dialogConfig.width = '30%';
+    dialogConfig.width = '70%';
+    dialogConfig.height = '70%';
 
     const dialogRef = this.dialog.open(StickyWallModalComponent, dialogConfig);
 

@@ -38,7 +38,8 @@ export class StickyWallModalComponent {
           Validators.maxLength(TEXT_FIELDS_MAX_LENGTH),
           Validators.pattern(/^[A-Za-z\s.]+$/)
         ])
-      ]
+      ],
+      noteText: []
     });
   }
 

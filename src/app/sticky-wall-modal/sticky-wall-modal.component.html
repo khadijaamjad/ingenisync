@@ -18,6 +18,9 @@
       <mat-form-field appearance="outline" aria-multiline="true">
         <mat-label>Note text</mat-label>
         <textarea
+          rows="7"
+          cdkTextareaAutosize
+          cdkAutosizeMinRows="1"
           matInput
           formControlName="noteText"
           placeholder="Ex. It makes me feel..."
@@ -28,16 +31,17 @@
         controlName="Note Text"
       ></app-error-msg> -->
     </div>
-    <mat-divider></mat-divider>
+    <mat-divider class="divider-style"></mat-divider>
   </form>
 </mat-dialog-content>
-<mat-dialog-actions class="right">
-  <div class="form-group">
+<mat-dialog-actions>
+  <span class="spacer"></span>
+
+  <div class="form-group buttons-container">
     <button
       mat-flat-button
       [disabled]="formGroup.invalid"
       color="primary"
-      class="mr-1 right"
       (click)="onSubmit()"
     >
       <span
@@ -51,7 +55,6 @@
       mat-flat-button
       type="button"
       color="warn"
-      class="mr-1 right"
       (click)="close()"
     >
       Cancel

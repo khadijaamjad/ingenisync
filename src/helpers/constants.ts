@@ -11,7 +11,8 @@ export const ENDPOINTS = {
 
 export enum MESSAGES {
   INVALID_USERNAME_PASSWORD = 'Invalid username or password.',
-  ERROR_FROM_API = 'Error received from API.'
+  ERROR_FROM_API = 'Error received from API.',
+  NOTE_DELETED= 'Note deleted successfully'
 }
 
 export const TEXT_FIELDS_MAX_LENGTH = 30;

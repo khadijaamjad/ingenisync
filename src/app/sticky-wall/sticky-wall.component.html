@@ -19,7 +19,11 @@
 
 <div class="grid">
   @for (note of notes; track note) {
-    <app-sticky-wall-card [note]="note" (click)="openStickyNoteModal(note)"></app-sticky-wall-card>
+    <app-sticky-wall-card
+      [note]="note"
+      [noteDeletionFunction]="deleteStickyNote"
+      [noteUpdatingFunction]="openStickyNoteModal"
+    ></app-sticky-wall-card>
   }
   <mat-card class="card-height-limit" (click)="openStickyNoteModal()">
     <mat-card-content class="add-card">

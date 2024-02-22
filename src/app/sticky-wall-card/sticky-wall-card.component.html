@@ -1,10 +1,32 @@
 <mat-card class="card-height-limit">
   <mat-card-header>
     <mat-card-title
-      ><b>{{ note?.title }}</b></mat-card-title
-    >
+      ><b>{{ note.title }}</b>
+    </mat-card-title>
     <mat-card-subtitle>Edited 2 days ago</mat-card-subtitle>
+
+    <span class="spacer"></span>
+
+    <mat-icon
+      class="mini-icon"
+      style="margin-right: 2%"
+      aria-label="Delete note"
+      matTooltip="Delete note"
+      color="accent"
+      (click)="noteDeletionFunction(note)"
+      >delete</mat-icon
+    >
+
+    <mat-icon
+      class="mini-icon"
+      aria-label="Edit note"
+      matTooltip="Edit note"
+      color="accent"
+      (click)="noteUpdatingFunction(note)"
+      >edit</mat-icon
+    >
   </mat-card-header>
+
   <mat-card-content>
     <ng-container *ngFor="let paragraph of note?.noteText?.split('\n')">
       <p>{{ paragraph }}</p>
