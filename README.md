@@ -32,12 +32,12 @@
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#developmentserver">Development server</a></li>
-        <li><a href="#codescaffolding">Code scaffolding</a></li>
+        <li><a href="#development-server">Development server</a></li>
+        <li><a href="#code-scaffolding">Code scaffolding</a></li>
         <li><a href="#build">Build</a></li>
-        <li><a href="#runningunittests">Running unit tests</a></li>
-        <li><a href="#runningend-to-endtests">Running end-to-end tests</a></li>
-        <li><a href="#furtherhelp">Further help</a></li>
+        <li><a href="#running-unit-tests">Running unit tests</a></li>
+        <li><a href="#running-end-to-end-tests">Running end-to-end tests</a></li>
+        <li><a href="#further-help">Further help</a></li>
       </ul>
     </li>
     <li><a href="#contributing">Contributing</a></li>
@@ -48,7 +48,7 @@
 
 <!-- Features -->
 
-## :information_source: Features
+## ⚡ Features
 
 <!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
 
@@ -58,9 +58,7 @@
 - See all your upcoming tasks for the week or just today
 - Check out the calendar view to see how busy your days have been or are going to be
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
-
-<p align="right">(<a href="#readme-top">back to top 🔼</a>)</p>
+<p align="right">(<a href="#readme-top">Go to top 🔼</a>)</p>
 
 ## :computer: Technologies
 
@@ -73,7 +71,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - ![SCSS][SCSS]
 - ![TypeScript][TypeScript]
 
-<p align="right">(<a href="#readme-top">back to top 🔼</a>)</p>
+<p align="right">(<a href="#readme-top">Go to top 🔼</a>)</p>
 
 <!-- GETTING STARTED -->
 
@@ -109,7 +107,7 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
-<p align="right">(<a href="#readme-top">back to top 🔼</a>)</p>
+<p align="right">(<a href="#readme-top">Go to top 🔼</a>)</p>
 
 <!-- CONTRIBUTING -->
 
@@ -123,7 +121,7 @@ If you have a suggestion for improvement, please fork the repo and create a pull
 4. Push to the Branch (`git push origin feat/NewFeatureName`)
 5. Open a Pull Request
 
-<p align="right">(<a href="#readme-top">back to top 🔼</a>)</p>
+<p align="right">(<a href="#readme-top">Go to top 🔼</a>)</p>
 
 <!-- LICENSE -->
 
@@ -131,18 +129,18 @@ If you have a suggestion for improvement, please fork the repo and create a pull
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
-<p align="right">(<a href="#readme-top">back to top 🔼</a>)</p>
+<p align="right">(<a href="#readme-top">Go to top 🔼</a>)</p>
 
 <!-- Improvements -->
 
 ## 🛠️ Improvements
 
-- [] Implement Dark mode
-- [] Add a dashboard with stats
+- [ ] Implement Dark mode
+- [ ] Add a dashboard with stats
 
 See the [open issues](https://github.com/khadijaamjad/ingenisync/issues) for a full list of proposed features (and known issues).
 
-<p align="right">(<a href="#readme-top">back to top 🔼</a>)</p>
+<p align="right">(<a href="#readme-top">Go to top 🔼</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
