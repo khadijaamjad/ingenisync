@@ -66,12 +66,12 @@ Of course, no one template will serve all projects since your needs may be diffe
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.7. Here is a list of the tech stack used in this project:
 
-- [![MongoDB][MongoDB]]
-- [![ExpressJs][Express.js]]
-- [![Angular][Angular.io]]
-- [![NodeJS][NodeJS]]
-- [![SCSS][SCSS]]
-- [![TypeScript][TypeScript]]
+- ![MongoDB][MongoDB]
+- ![ExpressJs][Express.js]
+- ![Angular][Angular.io]
+- ![NodeJS][NodeJS]
+- ![SCSS][SCSS]
+- ![TypeScript][TypeScript]
 
 <p align="right">(<a href="#readme-top">back to top 🔼</a>)</p>
 
@@ -152,5 +152,5 @@ See the [open issues](https://github.com/khadijaamjad/ingenisync/issues) for a f
 [Express.js]: https://img.shields.io/badge/ExpressJS-000000.svg?&style=flat&logo=express&logoColor=white
 [Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
 [NodeJS]: https://img.shields.io/badge/NodeJS-339933.svg?&style=flat&logo=node.js&logoColor=white
-[SCSS]: https://img.shields.io/badge/SCSS.svg?&style=flat&logo=css3&logoColor=white
-[TypeScript]: (https://img.shields.io/badge/TypeScript-007ACC.svg?&style=flat&logo=typescript&logoColor=white)
+[SCSS]: https://img.shields.io/badge/SCSS-CC6699.svg?&style=flat&logo=sass&logoColor=white
+[TypeScript]: https://img.shields.io/badge/TypeScript-007ACC.svg?&style=flat&logo=typescript&logoColor=white
