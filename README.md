@@ -150,7 +150,7 @@ See the [open issues](https://github.com/khadijaamjad/ingenisync/issues) for a f
 [product-screenshot]: images/screenshot.png
 [MongoDB]: https://img.shields.io/badge/MongoDB-47A248.svg?&style=flat&logo=mongodb&logoColor=white
 [Express.js]: https://img.shields.io/badge/ExpressJS-000000.svg?&style=flat&logo=express&logoColor=white
-[Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
+[Angular.io]: https://img.shields.io/badge/Angular-DD0031.svg?&style=flat&logo=angular&logoColor=white
 [NodeJS]: https://img.shields.io/badge/NodeJS-339933.svg?&style=flat&logo=node.js&logoColor=white
 [SCSS]: https://img.shields.io/badge/SCSS-CC6699.svg?&style=flat&logo=sass&logoColor=white
 [TypeScript]: https://img.shields.io/badge/TypeScript-007ACC.svg?&style=flat&logo=typescript&logoColor=white
