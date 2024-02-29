@@ -1,9 +1,10 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ApiService } from '../services/api-service/api-service.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { ApiService } from '../services/api-service/api-service.service';
 import { isSuccessResponse, getSuccessAlert } from '../../helpers/utils';
 import { ToDoItem } from '../../models/ToDoItem';
+import { ToDoList } from '../../models/ToDoList';
 
 @Component({
   selector: 'app-list-item-modal',
@@ -17,7 +18,7 @@ export class ListItemModalComponent implements OnInit {
   submitted = false;
   selectedList: ToDoItem;
   description: string;
-  formGroup!: FormGroup;
+  formGroup: FormGroup;
 
   constructor(
     private fb: FormBuilder,
@@ -28,13 +29,13 @@ export class ListItemModalComponent implements OnInit {
     this.selectedList = data;
     this.isAddMode = !this.selectedList;
     this.description = this.isAddMode ? 'Add List Item' : 'Update List Item';
+
+    this.formGroup = this.fb.group({
+      task: ['', Validators.required]
+    });
   }
 
   ngOnInit() {
-    this.formGroup = this.fb.group({
-      name: ['', Validators.required]
-    });
-
     if (!this.isAddMode) {
       this.formGroup.patchValue(this.selectedList);
     }
@@ -56,8 +57,12 @@ export class ListItemModalComponent implements OnInit {
   }
 
   private addListItem() {
+    const newData: ToDoList = {
+      ...this.selectedList
+    };
+
     this.apiService
-      .addListItem(this.formGroup?.value)
+      .editList(this.formGroup?.value)
       .subscribe((data) => {
         if (isSuccessResponse(data)) this.saveAndClose();
       })

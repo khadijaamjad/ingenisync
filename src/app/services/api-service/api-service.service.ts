@@ -60,23 +60,23 @@ export class ApiService {
       .pipe(catchError(handleError<ToDoList[]>()));
   }
 
-  addList(stickyNote: ToDoList): Observable<ToDoList> {
+  addList(toDoList: ToDoList): Observable<ToDoList> {
     return this.httpClient
-      .post<ToDoList>(ENDPOINTS.TO_DO_LIST, stickyNote)
+      .post<ToDoList>(ENDPOINTS.TO_DO_LIST, toDoList)
       .pipe(catchError(handleError<ToDoList>()));
   }
 
-  deleteList(stickyNote: ToDoList): Observable<ToDoList> {
+  deleteList(toDoList: ToDoList): Observable<ToDoList> {
     return this.httpClient
-      .delete<ToDoList>(ENDPOINTS.TO_DO_LIST + `/${stickyNote._id}`, {
-        body: stickyNote
+      .delete<ToDoList>(ENDPOINTS.TO_DO_LIST + `/${toDoList._id}`, {
+        body: toDoList
       })
       .pipe(catchError(handleError<ToDoList>()));
   }
 
-  editList(stickyNote: ToDoList): Observable<ToDoList> {
+  editList(toDoList: ToDoList): Observable<ToDoList> {
     return this.httpClient
-      .put<ToDoList>(ENDPOINTS.TO_DO_LIST + `/${stickyNote._id}`, stickyNote)
+      .put<ToDoList>(ENDPOINTS.TO_DO_LIST + `/${toDoList._id}`, toDoList)
       .pipe(catchError(handleError<ToDoList>()));
   }
 

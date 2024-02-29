@@ -1,69 +1,71 @@
 <mat-dialog-content>
   <h3>{{ description }}</h3>
 
-  <form [formGroup]="formGroup" id="userForm" (ngSubmit)="onSubmit()">
-    <div class="p-1">
-      <div class="form-row">
-        <div class="form-group">
-          <mat-form-field class="full-width" appearance="outline">
-            <mat-label>To do ...</mat-label>
-            <input matInput type="text" formControlName="toDo" />
-          </mat-form-field>
-        </div>
-      </div>
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <!-- <div class="form-group">
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>List Name</mat-label>
+          <input matInput type="text" formControlName="list" required />
+        </mat-form-field> -->
+        <!-- <app-error-msg
+          [control]="list"
+          controlName="List Name"
+        ></app-error-msg> -->
+      <!-- </div>
+    </div> -->
 
-      <div class="form-row">
-        <div class="form-group col-6">
-          <mat-form-field class="full-width" appearance="outline">
-            <mat-label>List</mat-label>
-            <mat-select formControlName="listName">
-              <!-- <mat-option *ngFor="let list of lists" [value]="list.id">
-                {{ list.name }}
-              </mat-option> -->
-            </mat-select>
-          </mat-form-field>
-        </div>
-
-        <div class="form-group col-6">
-          <mat-form-field class="full-width" appearance="outline">
-            <mat-label>Team</mat-label>
-            <!-- <mat-select formControlName="team_name">
-              <mat-option *ngFor="let team of teams" [value]="team.name">
-                {{ team.name }}
-              </mat-option>
-            </mat-select> -->
-          </mat-form-field>
-        </div>
+    <div class="form-group">
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Task</mat-label>
+          <input matInput type="text" formControlName="task" required />
+        </mat-form-field>
+        <!-- <app-error-msg
+          [control]="task"
+          controlName="Task"
+        ></app-error-msg> -->
       </div>
-      <mat-divider></mat-divider>
     </div>
+
+    <div class="form-group">
+      <mat-form-field appearance="outline">
+        <mat-label>Due Date</mat-label>
+        <input matInput [matDatepicker]="picker" />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <!-- <app-error-msg
+        [control]="noteText"
+        controlName="Note Text"
+      ></app-error-msg> -->
+    </div>
+
+    <mat-divider></mat-divider>
   </form>
 </mat-dialog-content>
+<mat-dialog-actions>
+  <span class="spacer"></span>
 
-<mat-dialog-actions class="right">
-  <div class="form-group">
+  <div class="form-group buttons-container">
     <button
       mat-flat-button
       [disabled]="formGroup.invalid"
       color="primary"
-      class="mr-1 right"
       (click)="onSubmit()"
-      form="userForm"
     >
       <span
         *ngIf="loading"
-        class="spinner-border spinner-border-sm mr-1 right"
+        class="spinner-border spinner-border-sm mr-1"
       ></span>
       {{ isAddMode ? 'Add' : 'Update' }}
     </button>
 
-    <button
-      mat-flat-button
-      type="button"
-      color="warn"
-      class="mr-1 right"
-      (click)="close()"
-    >
+    <button mat-flat-button type="button" color="warn" (click)="close()">
       Cancel
     </button>
   </div>
