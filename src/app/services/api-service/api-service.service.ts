@@ -14,13 +14,29 @@ import { TaskTimelineEnum, ToDoList } from '../../../models/ToDoList';
 export class ApiService {
   constructor(private httpClient: HttpClient) {}
 
-  addListItem(listItem: any): Observable<any> {
-    return new Observable<any>();
+  //#region TO DO ITEMS
+  addListItem(listWithNewItem: ToDoList, listId: string): Observable<ToDoList> {
+    return this.httpClient
+      .post<ToDoList>(
+        ENDPOINTS.TO_DO_LIST + `/${listId}/items`,
+        listWithNewItem
+      )
+      .pipe(catchError(handleError<ToDoList>()));
   }
 
-  editListItem(listItem: any, oldListItem: any): Observable<any> {
-    return new Observable<any>();
+  editListItem(updatedList: ToDoList, listId: string): Observable<ToDoList> {
+    return this.httpClient
+      .put<ToDoList>(ENDPOINTS.TO_DO_LIST + `/${listId}/items`, updatedList)
+      .pipe(catchError(handleError<ToDoList>()));
   }
+
+  deleteListItem(updatedList: ToDoList, listId: string): Observable<ToDoList> {
+    return this.httpClient
+      .post<ToDoList>(ENDPOINTS.TO_DO_LIST + `/${listId}/items/delete`, updatedList)
+      .pipe(catchError(handleError<ToDoList>()));
+  }
+
+  //#endregion
 
   //#region STICKY NOTES
 
@@ -53,6 +69,12 @@ export class ApiService {
   //#endregion
 
   //#region LISTS
+
+  getSingleList(id: string): Observable<ToDoList> {
+    return this.httpClient
+      .get<ToDoList>(ENDPOINTS.TO_DO_LIST + `/${id}`)
+      .pipe(catchError(handleError<ToDoList>()));
+  }
 
   getLists(): Observable<ToDoList[]> {
     return this.httpClient
@@ -89,7 +111,7 @@ export class ApiService {
 
     switch (timeline) {
       case TaskTimelineEnum.Tomorrow:
-        endpoint = ENDPOINTS.UPCOMING_TASKS_TOMORROW
+        endpoint = ENDPOINTS.UPCOMING_TASKS_TOMORROW;
         break;
       case TaskTimelineEnum.ThisWeek:
         endpoint = ENDPOINTS.UPCOMING_TASKS_WEEK;

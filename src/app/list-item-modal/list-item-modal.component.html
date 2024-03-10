@@ -1,60 +1,90 @@
 <mat-dialog-content>
   <h3>{{ description }}</h3>
 
-  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
-    <!-- <div class="form-group">
-      <div>
-        <mat-form-field appearance="outline">
-          <mat-label>List Name</mat-label>
-          <input matInput type="text" formControlName="list" required />
-        </mat-form-field> -->
-        <!-- <app-error-msg
-          [control]="list"
-          controlName="List Name"
-        ></app-error-msg> -->
-      <!-- </div>
-    </div> -->
-
+  <form [formGroup]="todoListForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
+      <mat-form-field appearance="outline">
+        <mat-label>List Title</mat-label>
+        <input matInput type="text" formControlName="listTitle" required />
+      </mat-form-field>
+    </div>
+
+    <div class="row">
       <div>
-        <mat-form-field appearance="outline">
-          <mat-label>Task</mat-label>
-          <input matInput type="text" formControlName="task" required />
-        </mat-form-field>
-        <!-- <app-error-msg
-          [control]="task"
-          controlName="Task"
-        ></app-error-msg> -->
+        <h4>Add Tasks</h4>
+      </div>
+      <span class="spacer"></span>
+      <div>
+        <button
+          mat-icon-button
+          aria-label="Add new item"
+          matTooltip="Add new item"
+          color="primary"
+          type="button"
+          (click)="addItem()"
+        >
+          <mat-icon>add_circle</mat-icon>
+        </button>
       </div>
     </div>
 
-    <div class="form-group">
-      <mat-form-field appearance="outline">
-        <mat-label>Due Date</mat-label>
-        <input matInput [matDatepicker]="picker" />
-        <mat-hint>MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle
-          matIconSuffix
-          [for]="picker"
-        ></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-      <!-- <app-error-msg
-        [control]="noteText"
-        controlName="Note Text"
-      ></app-error-msg> -->
-    </div>
+    <table formArrayName="toDoItems">
+      <tr
+        *ngFor="let quantity of toDoItems().controls; let i = index"
+        [formGroupName]="i"
+      >
+        <td style="width: 50%">
+          <mat-form-field appearance="outline">
+            <mat-label>Description</mat-label>
+            <input matInput type="text" formControlName="description" />
+          </mat-form-field>
+        </td>
+
+        <td style="width: 45%">
+          <mat-form-field appearance="outline">
+            <mat-label>Due Date</mat-label>
+            <input matInput type="datetime" formControlName="dueDate" />
+          </mat-form-field>
+        </td>
+
+        <td style="display: flex; align-items: center">
+          <button
+            mat-icon-button
+            aria-label="Delete item"
+            matTooltip="Delete item"
+            color="warn"
+            type="button"
+            class="right"
+            (click)="removeItem(i)"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </table>
 
     <mat-divider></mat-divider>
   </form>
 </mat-dialog-content>
+
 <mat-dialog-actions>
   <span class="spacer"></span>
 
   <div class="form-group buttons-container">
     <button
       mat-flat-button
-      [disabled]="formGroup.invalid"
+      color="accent"
+      aria-label="Add new item"
+      matTooltip="Add new item"
+      type="button"
+      (click)="addItem()"
+    >
+      Add Item
+    </button>
+
+    <button
+      mat-flat-button
+      [disabled]="todoListForm.invalid"
       color="primary"
       (click)="onSubmit()"
     >
@@ -62,7 +92,7 @@
         *ngIf="loading"
         class="spinner-border spinner-border-sm mr-1"
       ></span>
-      {{ isAddMode ? 'Add' : 'Update' }}
+      Save List
     </button>
 
     <button mat-flat-button type="button" color="warn" (click)="close()">

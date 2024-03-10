@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ApiService } from '../services/api-service/api-service.service';
 import { isSuccessResponse, getSuccessAlert } from '../../helpers/utils';
@@ -16,53 +16,104 @@ export class ListItemModalComponent implements OnInit {
   isActive = true;
   isAddMode = true;
   submitted = false;
-  selectedList: ToDoItem;
+  selectedList: ToDoList;
   description: string;
-  formGroup: FormGroup;
+  todoListForm: FormGroup;
 
   constructor(
     private fb: FormBuilder,
     private apiService: ApiService,
     private dialogRef: MatDialogRef<ListItemModalComponent>,
-    @Inject(MAT_DIALOG_DATA) data: ToDoItem
+    @Inject(MAT_DIALOG_DATA) data: ToDoList
   ) {
     this.selectedList = data;
     this.isAddMode = !this.selectedList;
-    this.description = this.isAddMode ? 'Add List Item' : 'Update List Item';
+    this.description = this.isAddMode ? 'Add List' : 'Update List';
 
-    this.formGroup = this.fb.group({
-      task: ['', Validators.required]
+    this.todoListForm = this.fb.group({
+      listTitle: ['', Validators.required],
+      toDoItems: this.fb.array([])
     });
   }
 
   ngOnInit() {
     if (!this.isAddMode) {
-      this.formGroup.patchValue(this.selectedList);
+      this.todoListForm.patchValue({
+        listTitle: this.selectedList.title
+      });
+
+      const itemsFormArray = this.toDoItems();
+
+      this.selectedList.toDoItems.forEach((item) => {
+        itemsFormArray.push(this.existingItem(item));
+      });
     }
+  }
+
+  // Getter for the items form array
+  toDoItems(): FormArray {
+    return this.todoListForm.get('toDoItems') as FormArray;
+  }
+
+  newItem(): FormGroup {
+    return this.fb.group({
+      description: ['', Validators.required],
+      dueDate: ['']
+    });
+  }
+
+  existingItem(item: ToDoItem): FormGroup {
+    return this.fb.group({
+      _id: [item._id],
+      description: [item.description, Validators.required],
+      dueDate: [item.dueDate]
+    });
+  }
+
+  // Function to add a new item to the form array
+  addItem() {
+    const lastItem = this.toDoItems().at(this.toDoItems.length - 1);
+    const lastDescription = lastItem ? lastItem.get('description')?.value : '';
+
+    // Only add a new item if the description of the last item is provided
+    if (lastDescription.trim() !== '') {
+      this.toDoItems().push(this.newItem());
+    }
+  }
+
+  // Function to remove an item from the form array
+  removeItem(index: number) {
+    this.toDoItems().removeAt(index);
   }
 
   onSubmit() {
     this.submitted = true;
-    if (this.formGroup?.invalid) {
+
+    if (this.todoListForm?.invalid) {
       return;
     }
 
     this.loading = true;
 
-    if (this.isAddMode) {
+    if (
+      this.isAddMode ||
+      this.toDoItems().controls.length > this.selectedList.toDoItems.length
+    ) {
       this.addListItem();
+    } else if (
+      this.toDoItems().controls.length < this.selectedList.toDoItems.length
+    ) {
+      this.deleteListItems();
     } else {
       this.updateListItem();
     }
   }
 
   private addListItem() {
-    const newData: ToDoList = {
-      ...this.selectedList
-    };
+    const req = this.todoListForm?.value;
 
     this.apiService
-      .editList(this.formGroup?.value)
+      .addListItem(req, this.selectedList._id)
       .subscribe((data) => {
         if (isSuccessResponse(data)) this.saveAndClose();
       })
@@ -70,10 +121,21 @@ export class ListItemModalComponent implements OnInit {
   }
 
   private updateListItem() {
-    const req = this.formGroup?.value;
+    const req = this.todoListForm?.value;
 
     this.apiService
       .editListItem(req, this.selectedList._id)
+      .subscribe((data) => {
+        if (isSuccessResponse(data)) this.saveAndClose();
+      })
+      .add(() => (this.loading = false));
+  }
+
+  private deleteListItems() {
+    const req = this.todoListForm?.value;
+
+    this.apiService
+      .deleteListItem(req, this.selectedList._id)
       .subscribe((data) => {
         if (isSuccessResponse(data)) this.saveAndClose();
       })

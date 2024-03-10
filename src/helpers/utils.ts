@@ -2,7 +2,7 @@ import { Observable, of } from 'rxjs';
 import Swal from 'sweetalert2';
 
 export function isSuccessResponse(data: any) {
-  return data.responseCode?.toLowerCase() === 'success';
+  return data !== null || data !==undefined;
 }
 
 export function getSuccessAlert(msg: string) {

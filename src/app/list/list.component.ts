@@ -1,21 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToDoList } from '../../models/ToDoList';
-import { ToDoItem } from '../../models/ToDoItem';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ListItemModalComponent } from '../list-item-modal/list-item-modal.component';
+import { ApiService } from '../services/api-service/api-service.service';
+import { isSuccessResponse } from '../../helpers/utils';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss'
 })
-export class ListComponent implements OnInit {
+export class ListComponent {
   toDoList: ToDoList | undefined;
 
   constructor(
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private apiService: ApiService
   ) {
     const state = this.router?.getCurrentNavigation()?.extras.state;
 
@@ -24,21 +26,25 @@ export class ListComponent implements OnInit {
     }
   }
 
-  ngOnInit() {}
+  getList() {
+    this.apiService.getSingleList(this.toDoList!._id).subscribe((data) => {
+      if (isSuccessResponse(data)) this.toDoList = data;
+    });
+  }
 
-  openListItemModal(note?: ToDoItem) {
+  openListItemModal(toDoList?: ToDoList) {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.autoFocus = true;
-    dialogConfig.data = note;
+    dialogConfig.data = toDoList;
     dialogConfig.width = '70%';
     dialogConfig.height = '70%';
 
     const dialogRef = this.dialog.open(ListItemModalComponent, dialogConfig);
 
-    dialogRef.afterClosed().subscribe((data: ToDoItem) => {
+    dialogRef.afterClosed().subscribe((data: ToDoList) => {
       if (data) {
-        this.ngOnInit();
+        this.getList();
       }
     });
   }

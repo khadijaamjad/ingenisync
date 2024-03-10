@@ -7,14 +7,14 @@
       <div class="col-md-2">
         <button
           mat-icon-button
-          aria-label="Add new item"
-          matTooltip="Add new item"
+          aria-label="Edit list"
+          matTooltip="Edit list"
           color="primary"
           type="button"
           class="right"
-          (click)="openListItemModal()"
+          (click)="openListItemModal(toDoList)"
         >
-          <mat-icon>add_circle</mat-icon>
+          <mat-icon>edit</mat-icon>
         </button>
       </div>
     </div>
@@ -31,15 +31,15 @@
     <button
       mat-button
       color="primary"
-      aria-label="Add new item"
-      matTooltip="Add new item"
+      aria-label="Edit list"
+      matTooltip="Edit list"
       color="primary"
       type="button"
       class="right"
-      (click)="openListItemModal()"
+      (click)="openListItemModal(toDoList)"
     >
-      <mat-icon>add</mat-icon>
-      Add new item
+      <mat-icon>edit</mat-icon>
+      Edit list
     </button>
   </mat-card-content>
 </mat-card>
